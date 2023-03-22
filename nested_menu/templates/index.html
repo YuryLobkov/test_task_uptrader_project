@@ -1,12 +1,7 @@
+{% extends 'base.html' %}
 {% load draw_menu %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-</head>
-<body>
-    {% draw_menu 'main_menu'%}
-</body>
-</html>
+{% block menu %}
+{% draw_menu 'main_menu'%}
+{% endblock menu %}
+
+    

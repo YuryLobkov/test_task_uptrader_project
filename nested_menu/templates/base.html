@@ -1,0 +1,18 @@
+{% load draw_menu %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nested_menu</title>
+</head>
+<body>
+    {% block menu %}
+    {% endblock menu %}
+    {% if pagename %}
+    <h1>You are now at {{pagename}} {{item_name2}} {{item_name3}}</h1>
+    {% else %}
+    <h1>You are now at home</h1>
+    {% endif %}
+</body>
+</html>
