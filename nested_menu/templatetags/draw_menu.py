@@ -17,17 +17,17 @@ def draw_menu(context, menu_name):
 def recursive_draw(items, current_url, selected=False):
     menu_html = '<ul>'
     for item in items:
-        if item.url in current_url:
+        if current_url.startswith(item.url):
             selected = True
         if item.is_active(current_url):
             active_class = 'active'
-            selected = True
         else:
             active_class = ''
         menu_html += f'<li class="{active_class}"><a href="{item.url}">{item.name}</a>'
         children = item.children.all()
         if children and selected:
             menu_html += recursive_draw(children, current_url)
+            selected = False
         menu_html += '</li>'
     menu_html += '</ul>'
     return menu_html
