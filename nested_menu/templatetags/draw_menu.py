@@ -22,18 +22,21 @@ def draw_menu(context, menu_name):
             selected_menu = item
 
     output_html = f'<ul> <li> <a href="{selected_menu.url}">{selected_menu.name}</a>'
-    output_html += draw_childs(selected_menu, all_items)
+    output_html += draw_childs(selected_menu, all_items, current_url)
     output_html += ' </li> </ul>'
     return format_html(output_html)
 
 
-def draw_childs(parent, all_items):
+def draw_childs(parent, all_items, current_url):
+    if not current_url.startswith(parent.url):
+        return ''
+        
     child_tree = '<ul>'
     for item in all_items:
         if item.parent == parent:
             child_tree += f'<li><a href="{item.url}">{item.name}</a>'
             if check_childs(item, all_items):
-                child_tree += draw_childs(item, all_items)
+                child_tree += draw_childs(item, all_items, current_url)
             child_tree += '</li>'
     child_tree += '</ul>'
     return child_tree
