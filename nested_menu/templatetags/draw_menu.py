@@ -28,7 +28,10 @@ def draw_childs(parent, all_items, current_url):
     child_tree = '<ul>'
     for item in all_items:
         if item.parent == parent:
-            child_tree += f'<li><a href="{item.url}">{item.name}</a>'
+            if item.url == current_url:
+                child_tree += f'<li class="Active" style="font-weight: bold"><a href="{item.url}">{item.name}</a>'
+            else:
+                child_tree += f'<li><a href="{item.url}">{item.name}</a>'                
             # if this element has childs, recursive render
             if check_childs(item, all_items):
                 child_tree += draw_childs(item, all_items, current_url)
